@@ -1,0 +1,76 @@
+#spring:
+#  cloud:
+#    zookeeper:
+#      #      enabled: true
+#      #,106.12.209.161:6501,106.12.209.161:6502
+#      connect-string: 192.168.5.3:6500,192.168.5.3:6501,192.168.5.3:6502
+#      config:
+#        enabled: true
+#        sequenceRoot: /shr/sequence/dev
+#        ## 配置根路径
+#        root: /shr/configs/dev
+#        ## 配置默认上下文
+#        defaultContext: apps
+#        ## 配置profile分隔符
+#        profileSeparator: ':'
+#  application:
+#    #zk会在你指定的根目录下寻找以这个项目名命名的目录下的配置
+#    name: shr.spring.casebox
+#  profiles:
+#    active: dev,mysql,@env@
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    #name: test
+#    url: jdbc:mysql://106.12.209.161:9306/test?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=true
+#    username: root
+#    password: shr123
+#    hikari:
+#      auto-commit: true
+#      connection-test-query: SELECT 1
+#      connection-timeout: 30000
+#      idle-timeout: 1800000
+#      max-lifetime: 1765000
+#      maximum-pool-size: 2
+#      minimum-idle: 1
+pagehelper:
+  helper-dialect: mysql
+
+#management:
+#  health:
+#    db:
+#      enabled: true
+#  server:
+#    port: 1001
+#  endpoint:
+#    mappings:
+#      enabled: true
+#    health:
+#      enabled: true
+#  endpoints:
+#    web:
+#      exposure:
+#        include: health, info, hystrix.stream
+
+server:
+  port: 8080
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #name: test
+    url: jdbc:mysql://rr-wz9p1399e263x1ix6uo.mysql.rds.aliyuncs.com/yanwei_cloud_mall?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=true
+    username: dev
+    password: uAv9Souh6co=
+    hikari:
+      auto-commit: true
+      connection-test-query: SELECT 1
+      connection-timeout: 30000
+      idle-timeout: 1800000
+      max-lifetime: 1765000
+      maximum-pool-size: 2
+      minimum-idle: 1
+
+mybatis:
+  type-aliases-package: com.yanwei.cloud.pojo.model.**.* # 别名扫描宝
+  mapper-locations: classpath*:/mappers/**/mapper-*.xml # 映射文件的路径扫描

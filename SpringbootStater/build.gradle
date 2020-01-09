@@ -1,0 +1,164 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'java'
+    id 'maven'
+    id 'idea'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'shr.springboot'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://maven.oschina.net/content/groups/public/' }
+}
+
+// java编译的时候缺省状态下会因为中文字符而失败
+[compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
+
+
+dependencies {
+    compileOnly "org.springframework.boot:spring-boot-configuration-processor"
+    compile("org.springframework.boot:spring-boot-starter")
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+jar {
+    manifest {
+        attributes("Implementation-Title": "Gradle")
+    }
+}
+//-------------------------------------------------------------------------------------------------
+
+
+/*task hello {
+    println("task hello")
+
+}
+
+*//*task count << {
+    4.times { print "$it " }
+}*//*
+
+task intro(dependsOn : hello) {
+    println 'dependsOn ok'
+
+}
+
+//依赖延迟
+
+task hello2(dependsOn: 'hello'){
+    println 'hello2';
+
+}
+task myTask {
+    ext.myProperty = "myValue"
+}
+
+task printTaskProperties  {
+    println myTask.myProperty
+}
+
+
+task distribution  {
+    println "We build the zip with version=$version"
+}
+task release(dependsOn: 'distribution')  {
+    println 'We release now'
+}
+gradle.taskGraph.whenReady {taskGraph ->
+    if (taskGraph.hasTask(release)) {
+        version = '1.0'
+    } else {
+        version = '1.0-SNAPSHOT'
+    }
+}*/
+//def test;
+//test.inc = ['ffff','aaaaaa']
+//List list = new ArrayList<>()
+//list.add("vvv")
+//test.inc = list
+
+
+// ------------------------------------------------------Java-----------------------------------------------------------
+
+sourceCompatibility = 1.5
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
+    }
+}
+
+// 需要继承自DefaultTask
+class HelloWorldTask extends DefaultTask {
+    // @Optional 表示在配置该Task时，message是可选的。
+    @Optional
+    String message = 'I am kaku'
+    // @TaskAction 表示该Task要执行的动作,即在调用该Task时，hello()方法将被执行
+    @TaskAction
+    def hello(){
+        println "hello world $message"
+    }
+}
+
+
+task production {
+    bootRun.systemProperty 'env', 'production'
+}
+
+/*
+// hello使用了默认的message值
+task hello4(type:HelloWorldTask)
+
+// 重新设置了message的值
+task helloOne (type:HelloWorldTask){
+    message ="I am a android developer"
+}
+
+import org.springframework.boot.gradle.tasks.run.BootRun
+
+task production (type: BootRun)  {
+    classpath = sourceSets.main.runtimeClasspath
+    main= 'base.starter.StarterApplication'
+    systemProperty 'spring.profiles.active', 'prd'
+    systemProperty 'env', 'test'
+}
+
+task boottest(type: BootRun)  {
+    classpath = sourceSets.main.runtimeClasspath
+    main= 'base.starter.StarterApplication'
+    systemProperty 'spring.profiles.active', 'test'
+    systemProperty 'env', 'test'
+}
+
+task dev(type: BootRun)  {
+    classpath = sourceSets.main.runtimeClasspath
+    main= 'base.starter.StarterApplication'
+    systemProperty 'spring.profiles.active', 'dev'
+    systemProperty 'env', 'test'
+}*/
+
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file:D:/developer/resp")
+            pom.project {
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution 'repo'
+                    }
+                }
+            }
+        }
+    }
+}
