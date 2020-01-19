@@ -23,6 +23,6 @@ allprojects {
 
 dependencies {
     //引用bootstrap.yml文件需要使用该依赖
-    compile group: 'org.springframework', name: 'spring-context'
+//    compile group: 'org.springframework', name: 'spring-context'
 
 }
