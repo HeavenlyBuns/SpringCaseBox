@@ -23,6 +23,11 @@ public class AccountEntity implements UserDetails {
         this.username = username;
     }
 
+    public AccountEntity(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public Integer getId() {
         return id;
     }

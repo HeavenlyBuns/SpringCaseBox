@@ -17,10 +17,11 @@ public class AccountDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        if (username.equals("test"))
-            return new AccountEntity(username);
-        else
+        if ("test".equals(username)) {
+            return new AccountEntity(username,"test");
+        } else {
             throw new UsernameNotFoundException("用户名未找到");
+        }
 
     }
 }
