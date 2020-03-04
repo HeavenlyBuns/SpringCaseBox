@@ -1,0 +1,20 @@
+server:
+  port: 10001
+
+spring:
+  application:
+    name: eureka-server
+
+  #server.port：为了与后续要进行注册的服务区分，这里将服务注册中心的端口设置为 7000。
+  #eureka.client.register-with-eureka：表示是否将自己注册到 Eureka Server，默认为 true。
+  #eureka.client.fetch-registry：表示是否从 Eureka Server 获取注册信息，默认为 true。
+  #eureka.client.service-url.defaultZone：设置与 Eureka Server 交互的地址，查询服务和注册服务都需要依赖这个地址。默认是 http://localhost:8761/eureka  #；多个地址可使用英文逗号（,）分隔。
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:10000/eureka/
