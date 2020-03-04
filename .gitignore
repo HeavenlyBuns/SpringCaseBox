@@ -33,7 +33,9 @@ HELP.md
 */.gradle
 *out/*
 gradlew
+gradlew.bat
 gradle/wrapper/
+gradle/wrapper/gradle-*
 
 out
 log
