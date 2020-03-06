@@ -1,1 +1,10 @@
+spring:
+  application:
+    name: eureka-producer
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka/
 
+server:
+  port: 11000
