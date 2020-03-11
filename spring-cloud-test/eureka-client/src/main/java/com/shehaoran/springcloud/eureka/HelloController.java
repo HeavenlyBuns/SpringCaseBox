@@ -1,6 +1,7 @@
 package com.shehaoran.springcloud.eureka;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -14,8 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @RequestMapping("/index")
-    public String hello(){
-        return "heelo";
+    public String hello(@RequestParam(defaultValue = "") String name) {
+
+        return "这里是erreka客户端提供的index服务!欢迎 " + name + " 访问";
     }
 
 }
