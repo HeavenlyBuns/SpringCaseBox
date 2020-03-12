@@ -20,7 +20,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     /**
-     * 不加此依赖,会报错或者无法使用feign
+     * 不加此依赖,会报错或者无法使用feign,已包含ribbon依赖
      */
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {

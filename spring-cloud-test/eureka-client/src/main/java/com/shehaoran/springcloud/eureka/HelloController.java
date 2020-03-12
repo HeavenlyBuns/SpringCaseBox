@@ -17,7 +17,7 @@ public class HelloController {
     @RequestMapping("/index")
     public String hello(@RequestParam(defaultValue = "") String name) {
 
-        return "这里是erreka客户端提供的index服务!欢迎 " + name + " 访问";
+        return "这里是eureka客户端提供的index服务!欢迎 " + name + " 访问";
     }
 
 }
