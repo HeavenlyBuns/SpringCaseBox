@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:11600
+      name: config-git # 对应 {application} 部分
+      profile: dev # 对应 {profile} 部分
+      label: master # 对应 {label} 部分，即 Git 的分支。如果配置中心使用的是本地存储，则该参数无用
+
+# Spring Boot 1.5.X 以上默认开通了安全认证，所以要在配置文件 application.yml 中添加以下配置以
+#  将 /actuator/refresh 这个 Endpoint 暴露出来
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+
