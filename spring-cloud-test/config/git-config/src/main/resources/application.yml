@@ -11,3 +11,24 @@ spring:
         git:
           uri: https://gitee.com/HeavenlyBuns/spring-config.git
           search-paths: git-config
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka/
+
+########################################################################################################################
+#                  传统版
+#server:
+#  port: 11600
+#
+## Spring Cloud Config 也提供本地存储配置的方式。我们只需要设置属性 spring.profiles.active=native
+#spring:
+#  application:
+#    name: config-git-server
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://gitee.com/HeavenlyBuns/spring-config.git
+#          search-paths: git-config

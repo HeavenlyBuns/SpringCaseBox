@@ -1,10 +1,12 @@
 spring:
   cloud:
     config:
-      uri: http://localhost:11600
       name: config-git # 对应 {application} 部分
       profile: dev # 对应 {profile} 部分
       label: master # 对应 {label} 部分，即 Git 的分支。如果配置中心使用的是本地存储，则该参数无用
+      discovery:
+        enabled: true                 # 开启 Config 服务发现支持
+        service-id: config-git-server # 对应的配置中心的节点名称
 
 # Spring Boot 1.5.X 以上默认开通了安全认证，所以要在配置文件 application.yml 中添加以下配置以
 #  将 /actuator/refresh 这个 Endpoint 暴露出来
@@ -13,4 +15,29 @@ management:
     web:
       exposure:
         include: refresh
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka/
+
+
+########################################################################################################################
+#                  传统版
+#spring:
+#  cloud:
+#    config:
+#      uri: http://localhost:11600
+#      name: config-git # 对应 {application} 部分
+#      profile: dev # 对应 {profile} 部分
+#      label: master # 对应 {label} 部分，即 Git 的分支。如果配置中心使用的是本地存储，则该参数无用
+#
+## Spring Boot 1.5.X 以上默认开通了安全认证，所以要在配置文件 application.yml 中添加以下配置以
+##  将 /actuator/refresh 这个 Endpoint 暴露出来
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: refresh
+
 
