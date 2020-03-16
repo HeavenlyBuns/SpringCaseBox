@@ -1,0 +1,47 @@
+server:
+  port: 11800
+
+# Spring Cloud Config 也提供本地存储配置的方式。我们只需要设置属性 spring.profiles.active=native
+spring:
+  application:
+    name: config-bus-git-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/HeavenlyBuns/spring-config.git
+          search-paths: git-config
+
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+    port: 5672
+
+management:
+  endpoint:
+    bus-refresh:
+      enabled: true
+    env:
+      post:
+        enabled: true
+    bus-env:
+      enabled: true
+  server:
+    port: 30000
+  endpoints:
+    web:
+      exposure:
+        include: ['bus-refresh']
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka/
+
+
