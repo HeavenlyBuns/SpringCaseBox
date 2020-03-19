@@ -34,10 +34,7 @@ management:
       enabled: true
   server:
     port: 30000
-  endpoints:
-    web:
-      exposure:
-        include: ['bus-refresh']
+
 
 eureka:
   client:
