@@ -1,11 +1,11 @@
 plugins {
-    id 'org.springframework.boot' version '2.2.5.RELEASE'
+    id 'org.springframework.boot' version '2.0.9.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
 }
 
 group = 'com.shehaoran.springcloud'
-version = '1.0.1-SNAPSHOT'
+version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
@@ -13,16 +13,18 @@ repositories {
 }
 
 ext {
-    set('springCloudVersion', "Hoxton.SR1")
+    set('springCloudVersion', "Finchley.SR2")
 }
 
 dependencies {
+//    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-cloud-starter-bus-amqp'
+    implementation 'org.springframework.cloud:spring-cloud-bus'
+    implementation 'org.springframework.cloud:spring-cloud-stream-binder-rabbit'
+    implementation 'org.springframework.cloud:spring-cloud-config-server'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-//    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-ribbon'
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
+
 }
 
 dependencyManagement {

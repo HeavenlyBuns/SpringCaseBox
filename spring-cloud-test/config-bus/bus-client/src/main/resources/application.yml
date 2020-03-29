@@ -1,0 +1,12 @@
+server:
+  port: 11900
+
+
+spring:
+  cloud:
+    bus:
+      trace:
+        enabled: true
+      enabled: true
+  application:
+    name: config-bus-git-client

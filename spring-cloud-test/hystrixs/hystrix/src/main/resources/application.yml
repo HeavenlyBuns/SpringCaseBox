@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: hystrix
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka/
+
+server:
+  port: 11300
+
+feign:
+  hystrix:
+    enabled: true
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
