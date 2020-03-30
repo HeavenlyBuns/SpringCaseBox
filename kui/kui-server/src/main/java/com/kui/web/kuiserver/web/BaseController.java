@@ -26,7 +26,7 @@ public class BaseController {
     public ResponseEntity<List<ContentEntity>> find(@RequestParam(defaultValue = "1") Integer page,
                                                     @RequestParam(defaultValue = "20") Integer size,
                                                     @RequestParam(defaultValue = "base") String category) {
-        List<ContentEntity> contentEntities = contentService.find(page, size, category);
+        List<ContentEntity> contentEntities =  contentService.find(page, size, category);
         return ResponseEntity.ok(contentEntities);
 
     }
