@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@Api(value = "基础接口",tags = "基础服务")
+@Api(value = "基础接口", tags = "基础服务")
 @RequestMapping("/base")
 @RestController
 public class BaseController {
@@ -26,7 +26,7 @@ public class BaseController {
     public ResponseEntity<List<ContentEntity>> find(@RequestParam(defaultValue = "1") Integer page,
                                                     @RequestParam(defaultValue = "20") Integer size,
                                                     @RequestParam(defaultValue = "base") String category) {
-        List<ContentEntity> contentEntities =  contentService.find(page, size, category);
+        List<ContentEntity> contentEntities = contentService.find(page, size, category);
         return ResponseEntity.ok(contentEntities);
 
     }
@@ -34,7 +34,7 @@ public class BaseController {
     @ApiOperation("根据id删除")
     @DeleteMapping("/{id}")
     public ResponseEntity find(@PathVariable Integer id,
-                                                    @RequestParam(defaultValue = "base") String category) {
+                               @RequestParam(defaultValue = "base") String category) {
         contentService.delete(id, category);
         return ResponseEntity.ok().build();
 
