@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: cloud-gateway-rate
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 是否与服务注册于发现组件进行结合，通过 serviceId 转发到具体的服务实例。默认为 false，
+          #设为 true 便开启通过服务中心的自动根据 serviceId 创建路由的功能。
+          enabled: true
+          # 设置了自定义过滤器工厂
+      routes:
+        - id: service_customer
+          uri: lb://EUREKA-PRODUCER
+          order: 0
+          predicates:
+            - Path=/eureka-producer/**
+          filters:
+            - StripPrefix=1
+            - name: RequestRateLimiter
+              args:
+                key-resolver: "#{@remoteAddrKeyResolver}"
+                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.burstCapacity: 5
+            - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+
+  redis:
+    host: 192.168.10.38
+    port: 6379
+    database: 2
+    password: Yw2018
+
+server:
+  port: 12300
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

@@ -17,27 +17,13 @@ ext {
 }
 
 dependencies {
-    /**
-     * 路由熔断
-     */
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
-
-    /**
-     * 基于系统负载的动态限流,根据网络连接数、网络流量、CPU 或内存负载等来进行动态限流。
-     */
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-
-    /**
-     * 使用自带的限流过滤器,需要使用redis
-     */
     implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
-
-    implementation 'com.github.vladimir-bukhtoyarov:bucket4j-core:4.0.0'
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+    testImplementation 'io.projectreactor:reactor-test'
 }
 
 dependencyManagement {
