@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: admin-server-discovery
+  security:
+    user:
+      name: admin
+      password: admin
+
+server:
+  port: 12700
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka/
+    registry-fetch-interval-seconds: 5
+  instance:
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+    health-check-url: http://127.0.0.1:${server.port}/actuator/health
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+
+#-------------------------------------------------------------------------------
+#
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
