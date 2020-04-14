@@ -1,6 +1,31 @@
 spring:
   application:
     name: admin-server-discovery
+    # 邮件通知------------------------------------------------------
+  mail:
+    host: smtp.qq.com
+    username: 1257887353@qq.com
+    password: fsrsaufikwgjjicb
+    port: 465
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+    # 邮件通知 //////////////////////////////////////////////////////////
+  boot:
+    admin:
+      notify:
+        mail:
+          to: 435105706@qq.com
+          from: 1257887353@qq.com
+
   security:
     user:
       name: admin

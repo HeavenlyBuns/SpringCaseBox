@@ -16,7 +16,7 @@ eureka:
       defaultZone: http://127.0.0.1:10000/eureka/
     registry-fetch-interval-seconds: 10
   instance:
-    health-check-url: /actuator/health
+    #health-check-url: ${server.servletPath}/health
     lease-expiration-duration-in-seconds: 30
     lease-renewal-interval-in-seconds: 10
     metadata-map:
