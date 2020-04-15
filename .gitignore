@@ -44,3 +44,4 @@ rebel*
 rebel.xml
 build/**
 */build/*
+**/build
