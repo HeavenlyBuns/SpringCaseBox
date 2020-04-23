@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.builders.JdbcClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -116,5 +117,15 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
         //第二行和第三行分别是允许已授权用户访问 checkToken 接口和获取 token 接口。
         security.checkTokenAccess("isAuthenticated()");
         security.tokenKeyAccess("isAuthenticated()");
+    }
+
+    public static void main(String[] args) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        //加密方式 seccret
+        String encode = bCryptPasswordEncoder.encode("web-client123456");
+        boolean matches = bCryptPasswordEncoder.matches("d2ViLWNsaWVudCUzQXdlYi1jbGllbnQxMjM0NTY=",
+                "$2a$10$spVVqOIgkNrG.5Yax2KW8eIGAqjJnShYg5hDFcfUN55QD5sNth5Nm");
+        System.out.println();
+        System.out.println(encode);
     }
 }
