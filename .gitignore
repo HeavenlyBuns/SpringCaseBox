@@ -45,3 +45,4 @@ rebel.xml
 build/
 target/
 gradle/
+/**/gradle/
