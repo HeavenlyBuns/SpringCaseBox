@@ -8,7 +8,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 @EnableResourceServer
-@EnableWebSecurity
 @MapperScan(basePackages = "com.shehaoran.springcloud")
 @SpringBootApplication
 public class SecurityServerApplication {
