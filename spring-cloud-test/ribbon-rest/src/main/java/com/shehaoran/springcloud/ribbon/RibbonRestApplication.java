@@ -15,6 +15,9 @@ public class RibbonRestApplication {
         SpringApplication.run(RibbonRestApplication.class, args);
     }
 
+    /**
+     * 和 使用LoadBalancerClient 不能共存，只能二选一
+     */
     @LoadBalanced
     @Bean
     public RestTemplate restTemplate() {

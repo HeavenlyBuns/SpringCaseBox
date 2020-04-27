@@ -36,7 +36,8 @@ public class HelloController {
 
     @RequestMapping("/index-ribbon")
     public String hello2() {
-        String url = "http://eureka-producer" + "/index";
+//        String url = "http://eureka-producer" + "/index";
+        String url = "http://php-service" + "/api/v1/hello";
         return "使用Ribbon访问: " + restTemplate.getForObject(url, String.class);
     }
 

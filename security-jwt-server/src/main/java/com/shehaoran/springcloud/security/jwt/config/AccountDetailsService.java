@@ -1,4 +1,4 @@
-package com.heavenlybuns.springsecurity.config;
+package com.shehaoran.springcloud.security.jwt.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -33,7 +33,7 @@ public class AccountDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("the user is not found");
         } else {
             // 用户角色也应在数据库中获取
-            String role = "ROLE_ADMIN";
+            String role = "user>info>delete";
 
             List<SimpleGrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority(role));
