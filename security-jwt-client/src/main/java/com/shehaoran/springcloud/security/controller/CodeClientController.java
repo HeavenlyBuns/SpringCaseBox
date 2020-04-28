@@ -41,14 +41,14 @@ public class CodeClientController {
         RequestBody body = new FormBody.Builder()
                 .add("grant_type", "authorization_code")
                 .add("client", "code-client")
-                .add("redirect_uri", "http://127.0.0.1:6102/client-user/get")
+                .add("redirect_uri", "http://localhost:6102/client-user/login")
                 .add("code", code)
                 .build();
 
         Request request = new Request.Builder()
                 .url(tokenUrl)
                 .post(body)
-                .addHeader("Authorization", "Basic d2ViLWNsaWVudDp3ZWItY2xpZW50MTIzNDU2")
+                .addHeader("Authorization", "Basic Y29kZS1jbGllbnQ6Y29kZS1zZWNyZXQtODg4OA==")
                 .build();
         try {
             Response response = httpClient.newCall(request).execute();
