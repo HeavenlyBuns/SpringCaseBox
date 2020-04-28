@@ -12,6 +12,7 @@ spring:
         max-idle: 8
         min-idle: 0
     timeout: 100ms
+
 server:
   port: 6102
   servlet:
@@ -29,4 +30,5 @@ security:
       jwt:
         key-uri: http://localhost:6002/oauth/token_key
         key-value: dev
-
+    authorization:
+      check-token-access: http://localhost:6002/oauth/check_token

@@ -33,7 +33,7 @@ public class AccountDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("the user is not found");
         } else {
             // 用户角色也应在数据库中获取
-            String role = "user>info>delete";
+            String role = "ROLE_ADMIN";
 
             List<SimpleGrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority(role));

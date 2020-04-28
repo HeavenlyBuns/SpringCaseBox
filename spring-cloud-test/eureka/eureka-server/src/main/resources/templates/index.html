@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>H-OAuth2 Client</title>
+</head>
+<body>
+<div>
+    <a href="http://localhost:6002/oauth/authorize?client_id=code-client&response_type=code&redirect_uri=http://localhost:6102/client-user/login">登录</a>
+    <!--/*@thymesVar id="username" type="java.lang.String"*/-->
+    <span th:text="'当前认证用户：' + ${username}"></span>
+    <!--/*@thymesVar id="accessToken" type="java.lang.String"*/-->
+    <span th:text="${accessToken}"></span>
+</div>
+</body>
+</html>

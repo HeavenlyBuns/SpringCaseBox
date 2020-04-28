@@ -27,6 +27,8 @@ spring:
 server:
   port: 6002
 
+
+
 management:
   endpoint:
     health:

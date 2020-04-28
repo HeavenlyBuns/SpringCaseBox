@@ -41,7 +41,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http
+                //授权页面访问
+                .formLogin()
+                .and()
+                .authorizeRequests()
                 .antMatchers("/**").permitAll();
     }
 
