@@ -33,3 +33,15 @@ management:
   endpoint:
     health:
       enabled: true
+
+logging:
+  file:
+    path: /yuelai-cloud-java
+  level:
+    root: DEBUG
+    service: DEBUG
+    repository: DEBUG
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR
